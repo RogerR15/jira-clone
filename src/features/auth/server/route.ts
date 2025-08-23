@@ -7,7 +7,7 @@ import { createAdminClient } from "@/lib/appwrite";
 import { ID } from "node-appwrite";
 import { AUTH_COOKIE } from "../constants";
 import { sessionMiddleware } from "@/lib/session-middleware";
-import { da } from "date-fns/locale";
+
 
 const app = new Hono()
 
