@@ -12,7 +12,7 @@ interface WorkspaceIdSettingsPageProps {
 
 
 const WorkspaceIdSettingsPage = async ({ params }: WorkspaceIdSettingsPageProps) => {
-    const { workspaceId } = await params; // 👈 destructure după await
+    const workspaceId = params.workspaceId;
 
     const user = await getCurrent();
     if (!user) redirect("/sign-in");
