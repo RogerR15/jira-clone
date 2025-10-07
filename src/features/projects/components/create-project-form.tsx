@@ -32,14 +32,17 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
 
-    const form = useForm<z.infer<typeof createProjectsSchema>>({
-        resolver: zodResolver(createProjectsSchema),
+    const schema = createProjectsSchema.omit({ workspaceId: true });
+
+    const form = useForm<z.infer<typeof schema>>({
+        resolver: zodResolver(schema),
         defaultValues: {
             name: "",
-        }
+        },
     });
 
-    const onSubmit = (values: z.infer<typeof createProjectsSchema>) => {
+
+    const onSubmit = (values: z.infer<typeof schema>) => {
 
         const finalValues = {
             ...values,
@@ -50,7 +53,8 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
         mutate({ form: finalValues }, {
             onSuccess: ({ data }) => {
                 form.reset();
-                //TODO: Redirect to project page
+
+                router.push(`/workspaces/${workspaceId}/projects/${data.$id}`);
 
             }
         }
