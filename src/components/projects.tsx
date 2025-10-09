@@ -40,7 +40,7 @@ export const Projects = () => {
                             isActive && "bg-white shadow-sm hover:opacity-100 text-primary"
                         )}>
                             <ProjectAvatar image={project.imageUrl} name={project.name} />
-                            <span className="truncate">
+                            <span className="truncate p-2">
                                 {project.name}
                             </span>
                         </div>

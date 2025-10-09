@@ -6,7 +6,7 @@ import { getMember } from "@/features/members/utils";
 import { DATABASE_ID, MEMBERS_ID, PROJECTS_ID, TASKS_ID } from "@/config";
 import { ID, Query } from "node-appwrite";
 import z from "zod";
-import { TaskStatus } from "../types";
+import { Task, TaskStatus } from "../types";
 import { createAdminClient } from "@/lib/appwrite";
 import { Project } from "@/features/projects/types";
 
@@ -22,7 +22,7 @@ const app = new Hono()
             assigneeId: z.string().nullish(),
             status: z.nativeEnum(TaskStatus).nullish(),
             search: z.string().nullish(),
-            dueDate: z.date().nullish(),
+            dueDate: z.coerce.date().nullish(),
         })),
         async (c) => {
             const { users } = await createAdminClient();
@@ -78,7 +78,7 @@ const app = new Hono()
                 query.push(Query.search("name", search));
             }
 
-            const tasks = await databases.listDocuments(
+            const tasks = await databases.listDocuments<Task>(
                 DATABASE_ID,
                 TASKS_ID,
                 query,
@@ -101,14 +101,24 @@ const app = new Hono()
 
             const assignees = await Promise.all(
                 members.documents.map(async (member) => {
-                    const user = await users.get(member.$id);
-                    return {
-                        ...member,
-                        name: user.name,
-                        email: user.email,
-                    };
+                    try {
+                        const user = await users.get(member.userId); // <-- schimbat aici
+                        return {
+                            ...member,
+                            name: user.name,
+                            email: user.email,
+                        };
+                    } catch (error) {
+                        console.error(`User not found for member ${member.$id}`, error);
+                        return {
+                            ...member,
+                            name: "Unknown",
+                            email: "unknown@example.com",
+                        };
+                    }
                 })
             );
+
 
             const populatedTasks = tasks.documents.map((task) => {
                 const project = projects.documents.find((project) => project.$id === task.projectId);
@@ -116,8 +126,8 @@ const app = new Hono()
 
                 return {
                     ...task,
-                    project,
-                    assignee,
+                    project: project ? { name: project.name } : null,
+                    assignee: assignee ? { name: assignee.name } : null,
                 };
             });
 

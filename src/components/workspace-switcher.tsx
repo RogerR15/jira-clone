@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useGetWorkspaces } from "@/features/workspaces/api/use-get-workspaces";
 import { WorkspaceAvatar } from "@/features/workspaces/components/workspace-avatar";
 import { useCreateWorkspaceModal } from "@/features/workspaces/hooks/use-create-workspace-modal";
+import { useEffect, useState } from "react";
 
 
 
@@ -17,7 +18,10 @@ export const WorkspaceSwitcher = () => {
     const { data: workspaces } = useGetWorkspaces();
     const { open } = useCreateWorkspaceModal();
 
+
+
     const onSelect = (id: string) => {
+
         router.push(`/workspaces/${id}`);
     };
 
