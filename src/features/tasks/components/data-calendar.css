@@ -4,8 +4,13 @@
     @apply min-h-[180px] border-t border-x;
   }
 
+  .rbc-header {
+    @apply border-b-0;
+  }
+
   .rbc-header + .rbc-header {
     @apply border-l-0;
+    @apply border-b-0;
   }
 
   .rbc-button-link {
