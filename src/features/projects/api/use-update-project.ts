@@ -12,7 +12,7 @@ type ResponseType = InferResponseType<typeof client.api.projects[":projectId"]["
 type RequestType = InferRequestType<typeof client.api.projects[":projectId"]["$patch"]>;
 
 export const useUpdateProject = () => {
-    const router = useRouter();
+
 
     const queryClient = useQueryClient();
 
@@ -34,8 +34,6 @@ export const useUpdateProject = () => {
 
         onSuccess: ({ data }) => {
             toast.success("Project updated successfully");
-
-            router.refresh();
 
             queryClient.invalidateQueries({ queryKey: ["projects"] });
             queryClient.invalidateQueries({ queryKey: ["project", data.$id] });
