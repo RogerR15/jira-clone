@@ -6,7 +6,7 @@ import { ProjectIdClient } from "./client";
 
 
 
-const ProjectsPage = async () => {
+const ProjectIdPage = async () => {
 
     const user = await getCurrent();
     if (!user) {
@@ -19,4 +19,4 @@ const ProjectsPage = async () => {
     );
 }
 
-export default ProjectsPage;
+export default ProjectIdPage;
