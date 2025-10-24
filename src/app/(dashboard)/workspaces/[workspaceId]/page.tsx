@@ -1,5 +1,6 @@
 import { getCurrent } from "@/features/auth/queries";
 import { redirect } from "next/navigation";
+import { WorkspaceIdClient } from "./client";
 
 const WorkspaceIdPage = async () => {
 
@@ -7,7 +8,7 @@ const WorkspaceIdPage = async () => {
     if (!user) redirect("/sign-in");
 
     return (
-        <div>Workspace ID Page</div>
+        <WorkspaceIdClient />
     );
 };
 

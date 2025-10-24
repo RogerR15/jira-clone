@@ -93,7 +93,7 @@ const app = new Hono()
                 return c.json({ message: "Member not found" }, 401);
             }
 
-            const projects = await databases.listDocuments(
+            const projects = await databases.listDocuments<Project>(
                 DATABASE_ID,
                 PROJECTS_ID,
                 [
