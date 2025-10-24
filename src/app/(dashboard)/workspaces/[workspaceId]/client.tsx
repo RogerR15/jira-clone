@@ -39,7 +39,7 @@ export const WorkspaceIdClient = () => {
         isLoadingProjects ||
         isLoadingMembers;
 
-    if (isLoadingProjects) {
+    if (isLoading) {
         return <PageLoader />
     }
 
@@ -52,8 +52,8 @@ export const WorkspaceIdClient = () => {
             <Analytics data={analytics} />
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 <TaskList data={tasks.documents} total={tasks.total} />
-                <ProjectList data={projects?.documents || []}
-                    total={projects?.total || 0} />
+                <ProjectList data={projects?.projects.documents || []}
+                    total={projects?.projects.total || 0} />
                 <MembersList data={members?.documents}
                     total={members?.total} />
             </div>

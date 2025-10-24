@@ -23,7 +23,7 @@ export const useGetProjects = ({ workspaceId }: useGetProjectsProps) => {
 
             console.log({ data });
 
-            return data.projects;
+            return data;
         }
     })
 
