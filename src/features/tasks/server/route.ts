@@ -139,7 +139,7 @@ const app = new Hono()
                         const user = await users.get(member.userId); // <-- schimbat aici
                         return {
                             ...member,
-                            name: user.name,
+                            name: user.name || user.email,
                             email: user.email,
                         };
                     } catch (error) {
@@ -338,7 +338,7 @@ const app = new Hono()
 
             const assignee = {
                 ...member,
-                name: user.name,
+                name: user.name || user.email,
                 email: user.email,
             };
 

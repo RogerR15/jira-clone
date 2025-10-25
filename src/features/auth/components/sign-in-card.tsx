@@ -21,10 +21,12 @@ import {
 import Link from "next/link";
 import { loginSchema } from "../schemas";
 import { useLogin } from "../api/use-login";
-
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
 
 
 export const SignInCard = () => {
+
+
 
     const { mutate, isPending } = useLogin();
 
@@ -101,6 +103,7 @@ export const SignInCard = () => {
             </div>
             <CardContent className="p-7 flex flex-col gap-y-4">
                 <Button
+                    onClick={() => signUpWithGoogle()}
                     disabled={isPending}
                     variant="secondary"
                     size="lg"
@@ -109,6 +112,7 @@ export const SignInCard = () => {
                     Login with Google
                 </Button>
                 <Button
+                    onClick={() => signUpWithGithub()}
                     disabled={isPending}
                     variant="secondary"
                     size="lg"
