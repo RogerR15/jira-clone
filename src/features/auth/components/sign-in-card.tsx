@@ -2,7 +2,7 @@
 
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { z, infer as zodInfer } from "zod";
+import { infer as zodInfer } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

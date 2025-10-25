@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useGetWorkspaces } from "@/features/workspaces/api/use-get-workspaces";
 import { WorkspaceAvatar } from "@/features/workspaces/components/workspace-avatar";
 import { useCreateWorkspaceModal } from "@/features/workspaces/hooks/use-create-workspace-modal";
-import { useEffect, useState } from "react";
+
 
 
 

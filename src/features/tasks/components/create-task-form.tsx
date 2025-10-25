@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { createTaskSchema } from "../schemas";
 import { z } from "zod";
-import { useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DottedSeparator } from "@/components/dotted-separator";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -36,6 +35,7 @@ export const CreateTaskForm = ({ onCancel, projectOptions, memberOptions }: Crea
 
 
     const form = useForm<z.infer<typeof createTaskSchema>>({
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         resolver: zodResolver(createTaskSchema) as any,
         defaultValues: {
             workspaceId,

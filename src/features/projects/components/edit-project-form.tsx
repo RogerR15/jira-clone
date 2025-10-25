@@ -12,14 +12,13 @@ import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { ArrowLeftIcon, CopyIcon, ImageIcon } from "lucide-react";
+import { ArrowLeftIcon, ImageIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 
 import { useConfirm } from "@/hooks/use-confirm";
 
-import { toast } from "sonner";
 import { useUpdateProject } from "../api/use-update-project";
 import { Project } from "../types";
 import { useDeleteProject } from "../api/use-delete-project";
