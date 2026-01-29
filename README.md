@@ -82,7 +82,7 @@ Prin dezvoltarea acestui proiect, am aprofundat cunoștințele în:
 
 ## 📄 Licență
 
-Acest proiect este licențiat sub **MIT License**
+Acest proiect este licențiat sub [MIT License](LICENSE).
 
 ## 👤 Autor
 
