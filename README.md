@@ -7,11 +7,6 @@
 
 O aplicație web modernă pentru managementul de proiecte, inspirată de Jira. Construită cu **React**, **TypeScript** și **TailwindCSS** pentru a demonstra concepte avansate de dezvoltare frontend.
 
-## 📸 Preview
-
-> **Notă:** Adaugă un screenshot al aplicației tale aici pentru impact vizual  
-> `![App Screenshot](./screenshots/app-preview.png)`
-
 ## ✨ Funcționalități
 
 - ✅ **Gestionare proiecte** - Creează și administrează multiple proiecte
